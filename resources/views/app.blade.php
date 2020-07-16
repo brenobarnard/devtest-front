@@ -9,7 +9,6 @@
         <script src="{{ mix('/js/app.js') }}" type="text/javascript"></script>
     </head>
     <body>
-        <img class="layout" src="{{URL::asset('/images/layout.png')}}" alt="">
         @section('header')
             <section id="header">
                 <div class="navbar">

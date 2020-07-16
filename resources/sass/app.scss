@@ -17,16 +17,6 @@ body {
     padding: 0;
 }
 
-.layout {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    opacity: 0.3;
-    pointer-events: none;
-}
-
 #header {
     background-image: url('../img/header.png');
     background-size: cover;
@@ -55,7 +45,7 @@ body {
         position: relative;
         height: $navbar-height;
         width: 100%;
-        padding-left: 115px;
+        padding-left: $spacing;
 
         &::before {
             content: '';
@@ -65,11 +55,12 @@ body {
             border-bottom-right-radius: 46px;
             background-color: map-get($colors, primary);
             height: 100%;
-            width: 58%;
+            width: 1045px;
             z-index: 1;
         }
 
         .nav-btn {
+            $img-height: 34px;
             cursor: pointer;
             position: relative;
             display: flex;
@@ -83,11 +74,11 @@ body {
             z-index: 2;
             padding: 18px 35px;
             margin-right: 35px;
-            line-height: 34px;
+            line-height: $img-height;
             color: map-get($colors, white);
 
             img {
-                height: 34px;
+                height: $img-height;
                 width: auto;
                 margin-right: 20px;
             }
@@ -159,7 +150,11 @@ body {
             align-items: center;
             cursor: pointer;
             user-select: none;
-            padding: 10px 0;
+            padding: 20px 0;
+
+            * {
+                pointer-events: none;
+            }
 
             .text {
                 color: map-get($colors, primary);
@@ -178,25 +173,31 @@ body {
             img {
                 width: 35px;
                 height: auto;
+                transition: transform 0.3s ease-out;
+            }
+        }
+
+        .answer {
+            transition: all 0.3s ease-out;
+            opacity: 1;
+
+            p {
+                margin: 0;
+                padding: 25px 0;
+                font-size: 2.5rem;
             }
         }
 
         &.collapsed {
             .answer {
-                max-height: 0px;
                 overflow: hidden;
                 padding: 0;
+                max-height: 0;
+                opacity: 0;
             }
-        }
 
-        .answer {
-            transition: max-height 0.3s ease-out;
-            max-height: 800px;
-
-            p {
-                margin: 0;
-                padding: 25px 0px;
-                font-size: 2.5rem;
+            img {
+                transform: rotateZ(-180deg);
             }
         }
     }
@@ -205,4 +206,210 @@ body {
 footer {
     height: 80px;
     background-color: map-get($colors, primary);
+}
+
+// Responsivo
+@media screen and (max-width: $media-xl) {
+    // Large Desktops
+    html {
+        font-size: $font-size-xl;
+    }
+
+    #header {
+        background-position: right;
+        background-position-x: 65%;
+        height: 60vh;
+
+        .navbar {
+            padding-left: $spacing-xl;
+            height: $navbar-height-xl;
+
+            &::before {
+                width: 936px;
+            }
+
+            .nav-btn {
+                $img-height-xl: 30px;
+                padding: 14px 30px;
+                margin-right: 30px;
+                line-height: $img-height-xl;
+
+                img {
+                    height: $img-height-xl;
+                }
+
+                &.float-btn {
+                    line-height: $img-height-xl;
+                    padding-top: 12px;
+                    right: 25px;
+                    margin: 0;
+                }
+            }
+        }
+        
+        .header-content {
+            height: calc(100% - #{$navbar-height-xl});
+            padding: $spacing-xl;
+
+            .header-title {
+                margin-bottom: 35px;
+            }
+        }
+    }
+
+    #content {
+        padding: 50px $spacing-xl;
+        padding-right: calc(3.50 * #{$spacing-xl});
+
+        .question {
+            margin-bottom: 30px;
+
+            .title {
+                padding: 18px 0;
+
+                img {
+                    width: 32px;
+                }
+            }
+
+            .answer {
+                p {
+                    padding: 20px 0;
+                }
+            }
+        }
+    }
+
+    footer {
+        height: 65px;
+    }
+}
+
+@media screen and (max-width: $media-l) {
+    
+    // Large Desktops
+    html {
+        font-size: $font-size-l;
+    }
+
+    #header {
+
+        .navbar {
+            padding-left: $spacing-l;
+            height: $navbar-height-l;
+
+            .nav-btn {
+                $img-height-l: 30px;
+                line-height: $img-height-l;
+
+                img {
+                    height: $img-height-l;
+                }
+
+                &.float-btn {
+                    line-height: $img-height-l;
+                    right: 0;
+                }
+            }
+        }
+        
+        .header-content {
+            height: calc(100% - #{$navbar-height-l});
+            padding: $spacing-l;
+        }
+    }
+
+    #content {
+        padding: 50px $spacing-l;
+        padding-right: calc(3.50 * #{$spacing-l});
+    }
+}
+
+// Responsivo
+@media screen and (max-width: $media-m) {
+    // Large Desktops
+    html {
+        font-size: $font-size-m;
+    }
+
+    #header {
+        background-position: right;
+        background-position-x: 65%;
+        height: 60vh;
+
+        .navbar {
+            padding-left: $spacing-m;
+            height: $navbar-height-m;
+
+            &::before {
+                width: 855px;
+            }
+
+            .nav-btn {
+                $img-height-m: 30px;
+                padding: 10px 25px;
+                margin-right: 25px;
+                line-height: $img-height-m;
+
+                img {
+                    height: $img-height-m;
+                }
+
+                &.float-btn {
+                    line-height: $img-height-m;
+                    right: 0;
+                }
+            }
+        }
+        
+        .header-content {
+            height: calc(100% - #{$navbar-height-m});
+            padding: $spacing-m;
+
+            .header-title {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    #content {
+        padding: 45px $spacing-m;
+        padding-right: calc(3.50 * #{$spacing-m});
+
+        .question {
+            margin-bottom: 28px;
+
+            .title {
+                padding: 18px 0;
+
+                img {
+                    width: 32px;
+                }
+            }
+
+            .answer {
+                p {
+                    padding: 20px 0;
+                }
+            }
+        }
+    }
+
+    footer {
+        height: 65px;
+    }
+}
+
+@media screen and (max-width: $media-s) {
+    // Tablets
+    html {
+        font-size: 48%;
+    }
+}
+
+@media screen and (max-width: $media-xs) {
+    // Smartphones
+    html {
+        font-size: 45%;
+    }
 }

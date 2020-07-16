@@ -42,16 +42,6 @@ body {
   padding: 0;
 }
 
-.layout {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 #header {
   background-image: url(/images/header.png?205c31b8bc6baf5ba266b59006c806a2);
   background-size: cover;
@@ -93,7 +83,7 @@ body {
   border-bottom-right-radius: 46px;
   background-color: #A141EB;
   height: 100%;
-  width: 58%;
+  width: 1045px;
   z-index: 1;
 }
 
@@ -190,7 +180,11 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  padding: 10px 0;
+  padding: 20px 0;
+}
+
+#content .question .title * {
+  pointer-events: none;
 }
 
 #content .question .title .text {
@@ -210,27 +204,221 @@ body {
 #content .question .title img {
   width: 35px;
   height: auto;
-}
-
-#content .question.collapsed .answer {
-  max-height: 0px;
-  overflow: hidden;
-  padding: 0;
+  transition: transform 0.3s ease-out;
 }
 
 #content .question .answer {
-  transition: max-height 0.3s ease-out;
-  max-height: 800px;
+  transition: all 0.3s ease-out;
+  opacity: 1;
 }
 
 #content .question .answer p {
   margin: 0;
-  padding: 25px 0px;
+  padding: 25px 0;
   font-size: 2.5rem;
+}
+
+#content .question.collapsed .answer {
+  overflow: hidden;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+}
+
+#content .question.collapsed img {
+  transform: rotateZ(-180deg);
 }
 
 footer {
   height: 80px;
   background-color: #A141EB;
+}
+
+@media screen and (max-width: 1600px) {
+  html {
+    font-size: 58%;
+  }
+
+  #header {
+    background-position: right;
+    background-position-x: 65%;
+    height: 60vh;
+  }
+
+  #header .navbar {
+    padding-left: 95px;
+    height: 90px;
+  }
+
+  #header .navbar::before {
+    width: 936px;
+  }
+
+  #header .navbar .nav-btn {
+    padding: 14px 30px;
+    margin-right: 30px;
+    line-height: 30px;
+  }
+
+  #header .navbar .nav-btn img {
+    height: 30px;
+  }
+
+  #header .navbar .nav-btn.float-btn {
+    line-height: 30px;
+    padding-top: 12px;
+    right: 25px;
+    margin: 0;
+  }
+
+  #header .header-content {
+    height: calc(100% - 90px);
+    padding: 95px;
+  }
+
+  #header .header-content .header-title {
+    margin-bottom: 35px;
+  }
+
+  #content {
+    padding: 50px 95px;
+    padding-right: calc(3.50 * 95px);
+  }
+
+  #content .question {
+    margin-bottom: 30px;
+  }
+
+  #content .question .title {
+    padding: 18px 0;
+  }
+
+  #content .question .title img {
+    width: 32px;
+  }
+
+  #content .question .answer p {
+    padding: 20px 0;
+  }
+
+  footer {
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: 55%;
+  }
+
+  #header .navbar {
+    padding-left: 80px;
+    height: 80px;
+  }
+
+  #header .navbar .nav-btn {
+    line-height: 30px;
+  }
+
+  #header .navbar .nav-btn img {
+    height: 30px;
+  }
+
+  #header .navbar .nav-btn.float-btn {
+    line-height: 30px;
+    right: 0;
+  }
+
+  #header .header-content {
+    height: calc(100% - 80px);
+    padding: 80px;
+  }
+
+  #content {
+    padding: 50px 80px;
+    padding-right: calc(3.50 * 80px);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 50%;
+  }
+
+  #header {
+    background-position: right;
+    background-position-x: 65%;
+    height: 60vh;
+  }
+
+  #header .navbar {
+    padding-left: 70px;
+    height: 75px;
+  }
+
+  #header .navbar::before {
+    width: 855px;
+  }
+
+  #header .navbar .nav-btn {
+    padding: 10px 25px;
+    margin-right: 25px;
+    line-height: 30px;
+  }
+
+  #header .navbar .nav-btn img {
+    height: 30px;
+  }
+
+  #header .navbar .nav-btn.float-btn {
+    line-height: 30px;
+    right: 0;
+  }
+
+  #header .header-content {
+    height: calc(100% - 75px);
+    padding: 70px;
+  }
+
+  #header .header-content .header-title {
+    margin-bottom: 30px;
+  }
+
+  #content {
+    padding: 45px 70px;
+    padding-right: calc(3.50 * 70px);
+  }
+
+  #content .question {
+    margin-bottom: 28px;
+  }
+
+  #content .question .title {
+    padding: 18px 0;
+  }
+
+  #content .question .title img {
+    width: 32px;
+  }
+
+  #content .question .answer p {
+    padding: 20px 0;
+  }
+
+  footer {
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 48%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  html {
+    font-size: 45%;
+  }
 }
 
