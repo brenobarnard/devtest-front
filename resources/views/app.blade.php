@@ -24,6 +24,12 @@
                     <button class="nav-btn float-btn">
                         <img src="{{URL::asset('/icon/area_restrita.png')}}" alt="">Área Restrita
                     </button>
+                    <button id="menu-open" class="menu-btn">
+                        <img src="{{URL::asset('/icon/hamburguer.png')}}" alt="">
+                    </button>
+                    <button id="menu-close" class="menu-btn">
+                        <img src="{{URL::asset('/icon/close.png')}}" alt="">
+                    </button>
                 </div>
                 @yield('header-content')
             </section>

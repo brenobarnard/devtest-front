@@ -9,8 +9,10 @@ class DuvidasController extends Controller
 {
     //
     public function index() {
+        // Get duvidas from JSON archive as an array of objects.
         $duvidas = json_decode(Storage::disk('public')->get('duvidas.json'));
         
+        // Returns the view passing questions data for this.
         return view('pages/duvidas', ['questions' => $duvidas->lista_tarefas]);
     }
 }

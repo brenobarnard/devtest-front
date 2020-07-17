@@ -47,6 +47,10 @@ body {
         width: 100%;
         padding-left: $spacing;
 
+        .menu-btn {
+            display: none;
+        }
+
         &::before {
             content: '';
             position: absolute;
@@ -210,7 +214,7 @@ footer {
 
 // Responsivo
 @media screen and (max-width: $media-xl) {
-    // Large Desktops
+    // Extra large Desktops
     html {
         font-size: $font-size-xl;
     }
@@ -286,13 +290,15 @@ footer {
 }
 
 @media screen and (max-width: $media-l) {
-    
     // Large Desktops
+
     html {
         font-size: $font-size-l;
     }
 
     #header {
+        background-position: 70px 0;
+        height: 50vh;
 
         .navbar {
             padding-left: $spacing-l;
@@ -327,15 +333,14 @@ footer {
 
 // Responsivo
 @media screen and (max-width: $media-m) {
-    // Large Desktops
+    // Medium Desktops
     html {
         font-size: $font-size-m;
     }
 
     #header {
-        background-position: right;
-        background-position-x: 65%;
-        height: 60vh;
+        background-position-x: 80px;
+        height: 45vh;
 
         .navbar {
             padding-left: $spacing-m;
@@ -403,13 +408,224 @@ footer {
 @media screen and (max-width: $media-s) {
     // Tablets
     html {
-        font-size: 48%;
+        font-size: $font-size-s;
+    }
+
+    #header {
+        height: 50vh;
+
+        .navbar {
+            height: $navbar-height-s;
+
+            &::before {
+                width: 690px;
+            }
+
+            .nav-btn {
+                $img-height-s: 22px;
+                padding: 10px 20px;
+                margin-right: 20px;
+                line-height: $img-height-s;
+
+                img {
+                    height: $img-height-s;
+                    margin-right: 10px;
+                }
+
+                &.float-btn {
+                    line-height: $img-height-s;
+                    right: 0;
+                }
+            }
+        }
     }
 }
 
 @media screen and (max-width: $media-xs) {
+    // Tablets
+    html {
+        font-size: $font-size-xs;
+    }
+
+    #header {
+        .navbar {
+            position: absolute;
+            align-items: flex-start;
+            justify-content: center;
+            transition: height 0.3s ease-in-out;
+            background-color: map-get($colors, primary);
+            flex-flow: column;
+            z-index: 10;
+            padding-left: $spacing-xs;
+
+            $button-padding: 15px;
+
+            .menu-btn {
+                display: unset;
+                cursor: pointer;
+                position: absolute;
+                background: none;
+                border: none;
+                z-index: 11;
+                padding: #{$button-padding};
+                transition: all 0.3s ease-in-out;
+                
+                img {
+                    width: 25px;
+                    height: auto;
+                }
+            }
+
+            #menu-open {
+                top: calc(50% - #{$button-padding});
+                left: calc(#{$spacing-xs} - #{$button-padding});
+                transform: translateY(calc(-50% + #{$button-padding})) scale(1);
+                opacity: 1;
+            }
+
+            #menu-close {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            &::before {
+                content: unset;
+            }
+
+            .nav-btn {
+                margin: unset;
+
+                &:not(:last-child) {
+                    display: none;
+                    margin-bottom: 15px;
+                }
+
+                &.float-btn {
+                    position: unset;
+                    top: unset;
+                    right: unset;
+                    margin: unset;
+                    border-radius: 400px;
+                }
+            }
+
+            &.opened {
+                position: fixed;
+                height: 100vh;
+                align-items: center;
+
+                #menu-open {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+
+                #menu-close {
+                    left: calc(#{$spacing-xs} - #{$button-padding});
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                .nav-btn {
+                    width: 40%;
+                    border-radius: 0;
+                    background: none;
+                    border-bottom: 1px solid map-get($colors, secondary);
+
+                    &:not(:last-child) {
+                        display: unset;
+                    }
+
+                    img {
+                        display: none;
+                    }
+
+                    &.float-btn {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 50px;
+                        border-bottom-color: map-get($colors, accent);
+
+                        img {
+                            display: unset;
+                            filter: brightness(1);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .header-content {
+            height: 100%;
+            background-color: map-get($colors, white);
+            padding: 0 $spacing-xs;
+            padding-top: $navbar-height-xs;
+        }
+    }
+
+    #content {
+        padding-right: $spacing-xs;
+
+        
+        .question {
+            margin-bottom: 25px;
+
+            .title {
+                img {
+                    width: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-xxs) {
     // Smartphones
     html {
-        font-size: 45%;
+        font-size: $font-size-xxs;
+    }
+
+    #header {
+        .navbar {
+            padding-left: $spacing-xxs;
+            $button-padding: 15px;
+
+            #menu-open {
+                left: calc(#{$spacing-xxs} - #{$button-padding});
+            }
+
+            &.opened {
+                #menu-close {
+                    left: calc(#{$spacing-xxs} - #{$button-padding});
+                }
+                .nav-btn {
+                    width: 60%;
+
+                    &.float-btn {
+                        img {
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-content {
+            padding: $spacing-xxs;
+        }
+    }
+
+    #content {
+        padding: $spacing-xxs;
+        
+        .question {
+            margin-bottom: 25px;
+
+            .title {
+                img {
+                    width: 20px;
+                }
+            }
+        }
     }
 }

@@ -75,6 +75,10 @@ body {
   padding-left: 115px;
 }
 
+#header .navbar .menu-btn {
+  display: none;
+}
+
 #header .navbar::before {
   content: '';
   position: absolute;
@@ -311,6 +315,11 @@ footer {
     font-size: 55%;
   }
 
+  #header {
+    background-position: 70px 0;
+    height: 50vh;
+  }
+
   #header .navbar {
     padding-left: 80px;
     height: 80px;
@@ -346,13 +355,12 @@ footer {
   }
 
   #header {
-    background-position: right;
-    background-position-x: 65%;
-    height: 60vh;
+    background-position-x: 80px;
+    height: 45vh;
   }
 
   #header .navbar {
-    padding-left: 70px;
+    padding-left: 55px;
     height: 75px;
   }
 
@@ -377,7 +385,7 @@ footer {
 
   #header .header-content {
     height: calc(100% - 75px);
-    padding: 70px;
+    padding: 55px;
   }
 
   #header .header-content .header-title {
@@ -385,8 +393,8 @@ footer {
   }
 
   #content {
-    padding: 45px 70px;
-    padding-right: calc(3.50 * 70px);
+    padding: 45px 55px;
+    padding-right: calc(3.50 * 55px);
   }
 
   #content .question {
@@ -410,15 +418,209 @@ footer {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 45%;
+  }
+
+  #header {
+    height: 50vh;
+  }
+
+  #header .navbar {
+    height: 60px;
+  }
+
+  #header .navbar::before {
+    width: 690px;
+  }
+
+  #header .navbar .nav-btn {
+    padding: 10px 20px;
+    margin-right: 20px;
+    line-height: 22px;
+  }
+
+  #header .navbar .nav-btn img {
+    height: 22px;
+    margin-right: 10px;
+  }
+
+  #header .navbar .nav-btn.float-btn {
+    line-height: 22px;
+    right: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   html {
-    font-size: 48%;
+    font-size: 42%;
+  }
+
+  #header .navbar {
+    position: absolute;
+    align-items: flex-start;
+    justify-content: center;
+    transition: height 0.3s ease-in-out;
+    background-color: #A141EB;
+    flex-flow: column;
+    z-index: 10;
+    padding-left: 45px;
+  }
+
+  #header .navbar .menu-btn {
+    display: unset;
+    cursor: pointer;
+    position: absolute;
+    background: none;
+    border: none;
+    z-index: 11;
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #header .navbar .menu-btn img {
+    width: 25px;
+    height: auto;
+  }
+
+  #header .navbar #menu-open {
+    top: calc(50% - 15px);
+    left: calc(45px - 15px);
+    transform: translateY(calc(-50% + 15px)) scale(1);
+    opacity: 1;
+  }
+
+  #header .navbar #menu-close {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  #header .navbar::before {
+    content: unset;
+  }
+
+  #header .navbar .nav-btn {
+    margin: unset;
+  }
+
+  #header .navbar .nav-btn:not(:last-child) {
+    display: none;
+    margin-bottom: 15px;
+  }
+
+  #header .navbar .nav-btn.float-btn {
+    position: unset;
+    top: unset;
+    right: unset;
+    margin: unset;
+    border-radius: 400px;
+  }
+
+  #header .navbar.opened {
+    position: fixed;
+    height: 100vh;
+    align-items: center;
+  }
+
+  #header .navbar.opened #menu-open {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  #header .navbar.opened #menu-close {
+    left: calc(45px - 15px);
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #header .navbar.opened .nav-btn {
+    width: 40%;
+    border-radius: 0;
+    background: none;
+    border-bottom: 1px solid #7928B7;
+  }
+
+  #header .navbar.opened .nav-btn:not(:last-child) {
+    display: unset;
+  }
+
+  #header .navbar.opened .nav-btn img {
+    display: none;
+  }
+
+  #header .navbar.opened .nav-btn.float-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border-bottom-color: #E1A607;
+  }
+
+  #header .navbar.opened .nav-btn.float-btn img {
+    display: unset;
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+
+  #header .header-content {
+    height: 100%;
+    background-color: #FFFFFF;
+    padding: 0 45px;
+    padding-top: 60px;
+  }
+
+  #content {
+    padding-right: 45px;
+  }
+
+  #content .question {
+    margin-bottom: 25px;
+  }
+
+  #content .question .title img {
+    width: 25px;
   }
 }
 
 @media screen and (max-width: 540px) {
   html {
-    font-size: 45%;
+    font-size: 28%;
+  }
+
+  #header .navbar {
+    padding-left: 25px;
+  }
+
+  #header .navbar #menu-open {
+    left: calc(25px - 15px);
+  }
+
+  #header .navbar.opened #menu-close {
+    left: calc(25px - 15px);
+  }
+
+  #header .navbar.opened .nav-btn {
+    width: 60%;
+  }
+
+  #header .navbar.opened .nav-btn.float-btn img {
+    height: 20px;
+  }
+
+  #header .header-content {
+    padding: 25px;
+  }
+
+  #content {
+    padding: 25px;
+  }
+
+  #content .question {
+    margin-bottom: 25px;
+  }
+
+  #content .question .title img {
+    width: 20px;
   }
 }
 
